@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: privynet_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: privynet
+      POSTGRES_PASSWORD: privynet_dev_password
+      POSTGRES_DB: privynet
+    ports:
+      - "5433:5432"
+    volumes:
+      - privynet_pgdata:/var/lib/postgresql/data
+
+volumes:
+  privynet_pgdata:
